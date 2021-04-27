@@ -7,7 +7,7 @@ const app = express()
 const port = process.env.PORT || 3000
 let progress = 0
 
-app.use(cors())
+app.use(cors({ origin: true, credentials: true }))
 
 app.get('/', (req, res) => {
     res.send('Hi! ^_^')
@@ -41,7 +41,6 @@ app.get('/status/:sessionID/:fid', (req, res) => {
 })
 
 app.get('/download/:sessionID/:fid/:fname', (req, res) => {
-    console.log('sss')
     res.download(path.resolve('example.pdf'))
 })
 
