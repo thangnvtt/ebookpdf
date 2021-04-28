@@ -7,7 +7,7 @@ const app = express()
 const port = process.env.PORT || 3000
 let progress = 0
 
-app.use(cors({ origin: true, credentials: true }))
+app.use(cors({ origin: 'https://ebookfront.herokuapp.com' }))
 
 app.get('/', (req, res) => {
     res.send('Hi! ^_^')
