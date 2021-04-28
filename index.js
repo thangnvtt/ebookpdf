@@ -21,7 +21,7 @@ app.get('/', (req, res) => {
     res.send('Hi! ^_^')
 })
 
-app.put('/upload/:sessionId', (req, res) => {
+app.post('/upload/:sessionId', (req, res) => {
     res.json({
         "data": {
             "file": "a.mobi",
