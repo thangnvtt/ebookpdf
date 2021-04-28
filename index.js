@@ -15,7 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.put('/upload/:sessionId', (req, res) => {
-    res.header("Access-Control-Allow-Origin", "https://ebookfront.herokuapp.com")
+    res.header("Access-Control-Allow-Origin", "https://ebookfront.herokuapp.com/")
     res.header("Access-Control-Allow-Headers", "X-Requested-With");
     res.json({
         "data": {
