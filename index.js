@@ -8,20 +8,18 @@ const port = process.env.PORT || 3000
 let progress = 0
 
 app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use(function (req, res, next) {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
-    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS, PUT')
-    console.log('res', res)
-    next()
-});
+const corsOptions = {
+    origin: ['http://localhost:3000', 'https://ebookfront.herokuapp.com'],
+    credentials: true,
+};
+app.use(cors(corsOptions));
 
 app.get('/', (req, res) => {
     res.send('Hi! ^_^')
 })
 
 app.put('/upload/:sessionId', (req, res) => {
+    console.log('res2', res)
     res.json({
         "data": {
             "file": "a.mobi",
