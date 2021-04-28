@@ -7,10 +7,15 @@ const app = express()
 const port = process.env.PORT || 3000
 let progress = 0
 
-app.use(cors()) // <---- use cors middleware
+app.use(bodyParser.urlencoded({ extended: true }))
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json());
+app.use(function (req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept')
+    res.setHeader('Access-Control-Allow-Methods', 'POST, GET, PATCH, DELETE, OPTIONS')
+    console.log('res', res)
+    next()
+});
 
 app.get('/', (req, res) => {
     res.send('Hi! ^_^')
