@@ -8,11 +8,7 @@ const port = process.env.PORT || 3000
 let progress = 0
 
 app.use(bodyParser.urlencoded({ extended: true }))
-const corsOptions = {
-    origin: ['http://localhost:3000', 'https://ebookfront.herokuapp.com'],
-    credentials: true,
-};
-app.use(cors(corsOptions));
+app.use(cors());
 
 app.get('/', (req, res) => {
     res.send('Hi! ^_^')
