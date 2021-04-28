@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
     res.send('Hi! ^_^')
 })
 
-app.post('/upload/:sessionId', (req, res) => {
+app.put('/upload/:sessionId', (req, res) => {
     res.json({
         "data": {
             "file": "a.mobi",
@@ -37,7 +37,8 @@ app.get('/status/:sessionID/:fid', (req, res) => {
     const sessionID = req.params.sessionID
     const fid = req.params.fid
     progress += 50
-    if (progress === 100) {
+    if (progress >= 100) {
+        progress = 0
         return res.json({ "convert_result": "a.pdf", "fid": fid, "progress": progress, "savings": null, "sid": sessionID, "status": "success", "thumb_url": "\/files\/zz18t2ir0xtby9h7\/o_1f49a0l7uafgac61esc1j4h1d1tl\/thumb.png?halt" })
     }
     res.json({ "fid": fid, "progress": progress, "sid": sessionID, "status": "processing", "status_text": null })
